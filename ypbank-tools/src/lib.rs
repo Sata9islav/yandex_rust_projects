@@ -1,14 +1,19 @@
 use ::std::io::{Read, Write};
 
+pub mod bin_format;
+pub mod csv_format;
 pub mod error;
 pub mod format;
 pub mod model;
+pub mod text_format;
 
 pub use error::LibraryError;
 pub use format::Format;
 pub use model::{Transaction, TransactionDiffernce, TransactionKind};
 
-use crate::format::{read_bin, read_csv, read_text, write_bin, write_csv, write_text};
+use crate::bin_format::{read_bin, write_bin};
+use crate::csv_format::{read_csv, write_csv};
+use crate::text_format::{read_text, write_text};
 
 pub fn read_transactions<R: Read>(
     reader: R,
