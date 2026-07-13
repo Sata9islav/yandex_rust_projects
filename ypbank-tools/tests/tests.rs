@@ -7,7 +7,7 @@ use ypbank_tools:: {
     write_transactions,
     Format,
     Transaction,
-    TransactionDifference,
+    TransactionDiffernce,
     TransactionKind,
 };
 
@@ -187,7 +187,7 @@ fn comparer_reports_first_difference() {
 
     assert_eq!(
         difference,
-        Some(TransactionDifference::FieldMismatch {
+        Some(TransactionDiffernce::FieldsMismatch {
             position: 1,
             field: "amount",
             left: "120000".to_string(),
