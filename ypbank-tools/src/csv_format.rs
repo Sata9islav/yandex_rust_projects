@@ -1,6 +1,8 @@
 use crate::{LibraryError, Transaction, TransactionKind};
 use std::io::{BufRead, BufReader, Read, Write};
 
+/// Читает транзакции из CSV-формата.
+/// Возвращает ошибку при повреждённых данных или ошибке чтения.
 pub fn read_csv<R: Read>(reader: R) -> Result<Vec<Transaction>, LibraryError> {
     let reader = BufReader::new(reader);
     let mut lines = reader.lines();
@@ -19,7 +21,7 @@ pub fn read_csv<R: Read>(reader: R) -> Result<Vec<Transaction>, LibraryError> {
 
     for (index, line) in lines.enumerate() {
         let line_number = index + 2;
-        let line = line?.to_lowercase();
+        let line = line?;
 
         let parts: Vec<&str> = line.trim().split(',').map(str::trim).collect();
 
@@ -56,6 +58,8 @@ pub fn read_csv<R: Read>(reader: R) -> Result<Vec<Transaction>, LibraryError> {
     Ok(transactions)
 }
 
+/// Записывает транзакции в CSV-формат.
+/// Возвращает ошибку при записи данных.
 pub fn write_csv<W: Write>(
     mut writer: W,
     transactions: &[Transaction],

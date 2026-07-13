@@ -1,5 +1,6 @@
 use crate::LibraryError;
 
+/// Поддерживаемые форматы данных.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Format {
     Csv,
@@ -8,6 +9,8 @@ pub enum Format {
 }
 
 impl Format {
+    /// Преобразует строковое имя формата в Format.
+    /// Возвращает ошибку для неизвестного формата.
     pub fn parse(value: &str) -> Result<Self, LibraryError> {
         match value.to_lowercase().as_str() {
             "csv" => Ok(Self::Csv),

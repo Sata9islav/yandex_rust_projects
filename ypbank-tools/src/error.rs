@@ -1,12 +1,15 @@
 use std::error::Error;
 use std::fmt;
 
+/// Ошибки библиотеки обработки транзакций.
 #[derive(Debug)]
 pub enum LibraryError {
+    /// Ошибка ввода-вывода.
     InputOutputError(std::io::Error),
+    /// Ошибка разбора данных.
     ParseError(String),
+    /// Ошибка формата данных.
     FormatError(String),
-    UnknownError(String),
 }
 
 impl fmt::Display for LibraryError {
@@ -15,7 +18,6 @@ impl fmt::Display for LibraryError {
             Self::InputOutputError(msg) => write!(f, "Invalid input: {msg}"),
             Self::ParseError(msg) => write!(f, "Parse error: {msg}"),
             Self::FormatError(msg) => write!(f, "Format error: {msg}"),
-            Self::UnknownError(msg) => write!(f, "Unknown error: {msg}"),
         }
     }
 }

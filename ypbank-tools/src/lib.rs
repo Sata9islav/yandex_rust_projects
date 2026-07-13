@@ -15,6 +15,8 @@ use crate::bin_format::{read_bin, write_bin};
 use crate::csv_format::{read_csv, write_csv};
 use crate::text_format::{read_text, write_text};
 
+/// Читает список транзакций из указанного формата.
+/// Возвращает ошибку чтения или парсинга данных.
 pub fn read_transactions<R: Read>(
     reader: R,
     format: Format,
@@ -26,6 +28,8 @@ pub fn read_transactions<R: Read>(
     }
 }
 
+/// Записывает список транзакций в указанный формат.
+/// Возвращает ошибку при записи данных.
 pub fn write_transactions<W: Write>(
     writer: W,
     format: Format,
@@ -38,6 +42,8 @@ pub fn write_transactions<W: Write>(
     }
 }
 
+/// Конвертирует данные между форматами через общее представление транзакции.
+/// Возвращает ошибку чтения или записи данных.
 pub fn convert<R: Read, W: Write>(
     reader: R,
     writer: W,
@@ -49,6 +55,8 @@ pub fn convert<R: Read, W: Write>(
     Ok(())
 }
 
+/// Сравнивает два списка транзакций.
+/// Возвращает первое найденное различие или None, если списки совпадают.
 pub fn compare_transactions(
     left: &[Transaction],
     right: &[Transaction],

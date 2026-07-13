@@ -3,6 +3,9 @@ use std::io::{Read, Write};
 
 const MAGIC: &[u8; 4] = b"YPB1";
 
+
+/// Читает транзакции из BIN-формата.
+/// Возвращает ошибку при повреждённых данных или ошибке чтения.
 pub fn read_bin<R: Read>(mut reader: R) -> Result<Vec<Transaction>, LibraryError> {
     let mut magic = [0u8; 4];
     reader.read_exact(&mut magic)?;
@@ -43,6 +46,9 @@ pub fn read_bin<R: Read>(mut reader: R) -> Result<Vec<Transaction>, LibraryError
     Ok(transactions)
 }
 
+/// Читает строку из бинарного потока.
+/// Сначала читает длину строки как `u32` в little-endian,
+/// затем читает указанное количество байтов и проверяет UTF-8.
 fn read_string<R: Read>(reader: &mut R) -> Result<String, LibraryError> {
     let mut len_bytes = [0u8; 4];
     reader.read_exact(&mut len_bytes)?;
@@ -54,6 +60,9 @@ fn read_string<R: Read>(reader: &mut R) -> Result<String, LibraryError> {
     })
 }
 
+/// Записывает строку в бинарный поток.
+/// Сначала записывает длину строки как `u32` в little-endian,
+/// затем записывает UTF-8 байты строки.
 fn write_string<W: Write>(writer: &mut W, value: &str) -> Result<(), LibraryError> {
     let bytes = value.as_bytes();
     let len = bytes.len() as u32;
@@ -62,6 +71,8 @@ fn write_string<W: Write>(writer: &mut W, value: &str) -> Result<(), LibraryErro
     Ok(())
 }
 
+/// Записывает транзакции в BIN-формат.
+/// Возвращает ошибку при записи данных.
 pub fn write_bin<W: Write>(
     mut writer: W,
     transactions: &[Transaction],

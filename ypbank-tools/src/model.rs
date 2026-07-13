@@ -1,8 +1,11 @@
 use std::fmt;
 
+/// Тип финансовой операции.
 #[derive(Debug, Clone, PartialEq)]
 pub enum TransactionKind {
+    /// Доход.
     Income,
+    /// Расход
     Expense,
 }
 
@@ -15,15 +18,22 @@ impl TransactionKind {
     }
 }
 
+/// Финансовая транзакция в общем внутреннем формате.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Transaction {
+    /// Дата операции.
     pub date: String,
+    /// Категория операции.
     pub category: String,
+    /// Тип операции.
     pub kind: TransactionKind,
+    /// Сумма операции.
     pub amount: i64,
 }
 
+
 impl Transaction {
+    /// Создаёт новую транзакцию.
     pub fn new(date: &str, category: &str, kind: TransactionKind, amount: i64) -> Self {
         Transaction {
             date: date.to_string(),
