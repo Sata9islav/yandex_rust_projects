@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Blog</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f5f6f8;
+            color: #20242a;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1, h2 { margin-bottom: 14px; }
+
+        section, article {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #e5e7eb;
+        }
+
+        input, textarea, button {
+            font: inherit;
+            box-sizing: border-box;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+        }
+
+        textarea { min-height: 90px; }
+
+        button {
+            padding: 9px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        button:disabled { opacity: 0.5; cursor: wait; }
+        .secondary { background: #64748b; }
+        .danger { background: #dc2626; }
+        .hidden { display: none; }
+        .muted { color: #667085; font-size: 14px; }
+        .actions { margin-top: 12px; }
+        #message { white-space: pre-wrap; }
+        #message.error { color: #b91c1c; }
+        #message.success { color: #166534; }
+        .post-content { white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>Rust Blog</h1>
+
+    <section>
+        <strong id="auth-status">Check authorization...</strong>
+        <button id="logout-btn" class="secondary hidden">
+            Log out
+        </button>
+    </section>
+
+    <p id="message" role="status"></p>
+
+    <div id="auth-forms">
+        <section>
+            <h2>Sign up</h2>
+            <form id="register-form">
+                <input name="username" placeholder="Имя пользователя"
+                       autocomplete="username" required>
+                <input name="email" type="email"
+                       placeholder="Email" required>
+                <input name="password" type="password"
+                       placeholder="Password"
+                       autocomplete="new-password" required>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Sign in</h2>
+            <form id="login-form">
+                <input name="username" placeholder="User name"
+                       autocomplete="username" required>
+                <input name="password" type="password"
+                       placeholder="Password"
+                       autocomplete="current-password" required>
+                <button type="submit">Sign in</button>
+            </form>
+        </section>
+    </div>
+
+    <section id="create-section" class="hidden">
+        <h2>New post</h2>
+        <form id="create-form">
+            <input name="title" placeholder="Title" required>
+            <textarea name="content" placeholder="Content"
+                      required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="edit-section" class="hidden">
+        <h2>Edit post</h2>
+        <form id="edit-form">
+            <input name="title" placeholder="Title" required>
+            <textarea name="content" required></textarea>
+            <button type="submit">Save</button>
+            <button type="button" id="cancel-edit" class="secondary">
+                Cancel
+            </button>
+        </form>
+    </section>
+
+    <h2>Publications</h2>
+    <button id="refresh-btn" class="secondary">Update list</button>
+    <div id="posts"></div>
+
+    <script type="module">
+        import init, { BlogApp } from "./pkg/blog_wasm.js";
+
+        const $ = (id) => document.getElementById(id);
+
+        let app;
+        let posts = [];
+        let editingId = null;
+
+        function showMessage(message, error = false) {
+            const element = $("message");
+            element.textContent = message;
+            element.className = error ? "error" : "success";
+        }
+
+        function errorText(error) {
+            return error instanceof Error
+                ? error.message
+                : String(error);
+        }
+
+        function updateAuthUI() {
+            const authenticated = app.is_authenticated();
+
+            $("auth-status").textContent = authenticated
+                ? "You are logged in"
+                : "You are not logged in";
+
+            $("auth-forms").classList.toggle("hidden", authenticated);
+            $("create-section").classList.toggle("hidden", !authenticated);
+            $("logout-btn").classList.toggle("hidden", !authenticated);
+
+            if (!authenticated) {
+                $("edit-section").classList.add("hidden");
+                editingId = null;
+            }
+        }
+
+        async function execute(action, successMessage) {
+            try {
+                await action();
+
+                if (successMessage) {
+                    showMessage(successMessage);
+                }
+            } catch (error) {
+                console.error(error);
+                showMessage(errorText(error), true);
+            }
+        }
+
+        async function refreshPosts() {
+            const result = await app.load_posts();
+            posts = result.posts;
+            renderPosts();
+        }
+
+        function renderPosts() {
+            const container = $("posts");
+            container.replaceChildren();
+
+            if (posts.length === 0) {
+                const empty = document.createElement("p");
+                empty.textContent = "No publication";
+                container.appendChild(empty);
+                return;
+            }
+
+            for (const post of posts) {
+                const article = document.createElement("article");
+
+                const title = document.createElement("h3");
+                title.textContent = post.title;
+
+                const content = document.createElement("p");
+                content.className = "post-content";
+                content.textContent = post.content;
+
+                const info = document.createElement("p");
+                info.className = "muted";
+                info.textContent =
+                    `ID: ${post.id} | Author: ${post.author_id}`;
+
+                article.append(title, content, info);
+                
+
+                
+                const currentUserId = app.current_user_id();
+
+                const isAuthor =
+                    app.is_authenticated() &&
+                    currentUserId !== undefined &&
+                    currentUserId !== null &&
+                    currentUserId === BigInt(post.author_id);
+
+                if (isAuthor) {
+                    const actions = document.createElement("div");
+                    actions.className = "actions";
+
+                    const editButton = document.createElement("button");
+                    editButton.textContent = "Edit";
+                    editButton.addEventListener("click", () => {
+                        editingId = post.id;
+
+                        const form = $("edit-form");
+                        form.elements.namedItem("title").value = post.title;
+                        form.elements.namedItem("content").value = post.content;
+
+                        $("edit-section").classList.remove("hidden");
+                        $("edit-section").scrollIntoView();
+                    });
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.className = "danger";
+                    deleteButton.addEventListener("click", () => {
+                        if (!confirm("Delete this post?")) return;
+
+                        execute(async () => {
+                            await app.delete_post(BigInt(post.id));
+                            await refreshPosts();
+                        }, "Post deleted");
+                    });
+
+                    actions.append(editButton, deleteButton);
+                    article.appendChild(actions);
+                }
+
+                container.appendChild(article);
+            }
+        }
+
+        $("register-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const data = new FormData(form);
+
+            execute(async () => {
+                await app.register(
+                    data.get("username").trim(),
+                    data.get("email").trim(),
+                    data.get("password")
+                );
+
+                form.reset();
+                updateAuthUI();
+                renderPosts();
+            }, "Registration complete ");
+        });
+
+        $("login-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const data = new FormData(form);
+
+            execute(async () => {
+                await app.login(
+                    data.get("username").trim(),
+                    data.get("password")
+                );
+
+                form.reset();
+                updateAuthUI();
+                renderPosts();
+            }, "Вход выполнен");
+        });
+
+        $("logout-btn").addEventListener("click", () => {
+            execute(async () => {
+                app.logout();
+                updateAuthUI();
+                renderPosts();
+            }, "You have logged out");
+        });
+
+        $("create-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const data = new FormData(form);
+
+            execute(async () => {
+                await app.create_post(
+                    data.get("title").trim(),
+                    data.get("content").trim()
+                );
+
+                form.reset();
+                await refreshPosts();
+            }, "Post published");
+        });
+
+        $("edit-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (editingId === null) return;
+
+            const form = event.currentTarget;
+            const data = new FormData(form);
+
+            execute(async () => {
+                await app.update_post(
+                    BigInt(editingId),
+                    data.get("title").trim(),
+                    data.get("content").trim()
+                );
+
+                editingId = null;
+                $("edit-section").classList.add("hidden");
+
+                await refreshPosts();
+            }, "Post updated");
+        });
+
+        $("cancel-edit").addEventListener("click", () => {
+            editingId = null;
+            $("edit-section").classList.add("hidden");
+        });
+
+        $("refresh-btn").addEventListener("click", () => {
+            execute(refreshPosts, "List updated");
+        });
+
+        async function main() {
+            try {
+                await init();
+                app = new BlogApp();
+
+                updateAuthUI();
+                await refreshPosts();
+            } catch (error) {
+                console.error(error);
+                showMessage(
+                    "pplication startup error.: " + errorText(error),
+                    true
+                );
+            }
+        }
+
+        main();
+    </script>
+</body>
+</html>
