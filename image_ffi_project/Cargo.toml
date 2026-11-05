@@ -1,0 +1,10 @@
+[workspace]
+members = ["image_processor", "plugin_interface", "mirror_plugin", "blur_plugin"]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.85"
+
+[workspace.dependencies]
+plugin_interface = { path = "plugin_interface" }
