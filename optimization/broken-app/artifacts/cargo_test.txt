@@ -1,0 +1,123 @@
+ Downloading crates ...
+  Downloaded autocfg v1.5.0
+  Downloaded cfg-if v1.0.4
+  Downloaded is-terminal v0.4.17
+  Downloaded itoa v1.0.15
+  Downloaded ciborium-io v0.2.2
+  Downloaded cast v0.3.0
+  Downloaded clap_lex v0.7.6
+  Downloaded plotters-svg v0.3.7
+  Downloaded ciborium-ll v0.2.2
+  Downloaded plotters-backend v0.3.7
+  Downloaded oorandom v11.1.5
+  Downloaded anstyle v1.0.13
+  Downloaded quote v1.0.42
+  Downloaded tinytemplate v1.2.1
+  Downloaded criterion-plot v0.5.0
+  Downloaded either v1.15.0
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded once_cell v1.21.3
+  Downloaded ciborium v0.2.2
+  Downloaded anes v0.1.6
+  Downloaded unicode-ident v1.0.22
+  Downloaded clap v4.5.53
+  Downloaded serde_core v1.0.228
+  Downloaded half v2.7.1
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded ryu v1.0.20
+  Downloaded proc-macro2 v1.0.103
+  Downloaded aho-corasick v1.1.4
+  Downloaded rayon-core v1.13.0
+  Downloaded serde_derive v1.0.228
+  Downloaded memchr v2.7.6
+  Downloaded zerocopy-derive v0.8.31
+  Downloaded itertools v0.10.5
+  Downloaded serde v1.0.228
+  Downloaded criterion v0.5.1
+  Downloaded plotters v0.3.7
+  Downloaded serde_json v1.0.145
+  Downloaded clap_builder v4.5.53
+  Downloaded rayon v1.11.0
+  Downloaded regex v1.12.2
+  Downloaded zerocopy v0.8.31
+  Downloaded syn v2.0.111
+  Downloaded regex-syntax v0.8.8
+  Downloaded regex-automata v0.4.13
+  Downloaded libc v0.2.178
+   Compiling proc-macro2 v1.0.103
+   Compiling quote v1.0.42
+   Compiling unicode-ident v1.0.22
+   Compiling crossbeam-utils v0.8.21
+   Compiling serde_core v1.0.228
+   Compiling zerocopy v0.8.31
+   Compiling autocfg v1.5.0
+   Compiling serde v1.0.228
+   Compiling libc v0.2.178
+   Compiling cfg-if v1.0.4
+   Compiling serde_json v1.0.145
+   Compiling rayon-core v1.13.0
+   Compiling either v1.15.0
+   Compiling clap_lex v0.7.6
+   Compiling memchr v2.7.6
+   Compiling ciborium-io v0.2.2
+   Compiling plotters-backend v0.3.7
+   Compiling anstyle v1.0.13
+   Compiling regex-syntax v0.8.8
+   Compiling itoa v1.0.15
+   Compiling ryu v1.0.20
+   Compiling itertools v0.10.5
+   Compiling same-file v1.0.6
+   Compiling clap_builder v4.5.53
+   Compiling cast v0.3.0
+   Compiling anes v0.1.6
+   Compiling oorandom v11.1.5
+   Compiling plotters-svg v0.3.7
+   Compiling walkdir v2.5.0
+   Compiling once_cell v1.21.3
+   Compiling broken-app v0.1.0 (/home/starling/Documents/yandex_rust_projects/broken-app)
+   Compiling num-traits v0.2.19
+   Compiling crossbeam-epoch v0.9.18
+   Compiling crossbeam-deque v0.8.6
+   Compiling syn v2.0.111
+   Compiling plotters v0.3.7
+   Compiling is-terminal v0.4.17
+   Compiling regex-automata v0.4.13
+   Compiling rayon v1.11.0
+   Compiling criterion-plot v0.5.0
+   Compiling clap v4.5.53
+   Compiling regex v1.12.2
+   Compiling zerocopy-derive v0.8.31
+   Compiling serde_derive v1.0.228
+   Compiling half v2.7.1
+   Compiling tinytemplate v1.2.1
+   Compiling ciborium-ll v0.2.2
+   Compiling ciborium v0.2.2
+   Compiling criterion v0.5.1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.71s
+     Running unittests src/lib.rs (target/debug/deps/broken_app-7ee2e4528d94fd23)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/debug/deps/demo-b793288168cabc91)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/deps/integration-0f6b06e8aa8abf5e)
+
+running 8 tests
+test dedup_is_sorted_and_unique ... ok
+test fibonacci_regressions ... ok
+test positive_average_and_empty_cases ... ok
+test use_after_free_has_no_dangling_dereference ... ok
+test normalizes_whitespace_including_tabs_and_newlines ... ok
+test no_buffer_leak_and_nonzero_count ... ok
+test sum_even_regression_empty_singleton_and_last ... ok
+test atomic_increment_and_reset ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

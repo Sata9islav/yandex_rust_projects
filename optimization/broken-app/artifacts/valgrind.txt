@@ -1,0 +1,118 @@
+==25288== Memcheck, a memory error detector
+==25288== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==25288== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==25288== Command: target/debug/deps/integration-0f6b06e8aa8abf5e --test-threads=1
+==25288== 
+
+running 8 tests
+test atomic_increment_and_reset ... ok
+test dedup_is_sorted_and_unique ... ok
+test fibonacci_regressions ... ok
+test no_buffer_leak_and_nonzero_count ... ok
+test normalizes_whitespace_including_tabs_and_newlines ... ok
+test positive_average_and_empty_cases ... ok
+test sum_even_regression_empty_singleton_and_last ... ok
+test use_after_free_has_no_dangling_dereference ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+==25288== 
+==25288== HEAP SUMMARY:
+==25288==     in use at exit: 596 bytes in 3 blocks
+==25288==   total heap usage: 887 allocs, 884 frees, 94,294 bytes allocated
+==25288== 
+==25288== 4 bytes in 1 blocks are still reachable in loss record 1 of 3
+==25288==    at 0x4941858: malloc (vg_replace_malloc.c:447)
+==25288==    by 0x40C8577: alloc (alloc.rs:130)
+==25288==    by 0x40C8577: alloc_impl_runtime (alloc.rs:302)
+==25288==    by 0x40C8577: alloc_impl (alloc.rs:424)
+==25288==    by 0x40C8577: allocate (alloc.rs:541)
+==25288==    by 0x40C8577: try_clone_from_ref_in<str, alloc::alloc::Global> (boxed.rs:886)
+==25288==    by 0x40C8577: clone_from_ref_in<str, alloc::alloc::Global> (boxed.rs:845)
+==25288==    by 0x40C8577: clone_from_ref<str> (boxed.rs:798)
+==25288==    by 0x40C8577: from (convert.rs:138)
+==25288==    by 0x40C8577: call_once<fn(&str) -> alloc::boxed::Box<str, alloc::alloc::Global>, (&str)> (function.rs:250)
+==25288==    by 0x40C8577: map<&str, alloc::boxed::Box<str, alloc::alloc::Global>, fn(&str) -> alloc::boxed::Box<str, alloc::alloc::Global>> (option.rs:1163)
+==25288==    by 0x40C8577: {closure#0} (thread_info.rs:114)
+==25288==    by 0x40C8577: {closure#0}<std::sys::pal::unix::stack_overflow::thread_info::set_current_info::{closure_env#0}, core::option::Option<alloc::boxed::Box<str, alloc::alloc::Global>>> (current.rs:234)
+==25288==    by 0x40C8577: try_with_current<std::thread::current::with_current_name::{closure_env#0}<std::sys::pal::unix::stack_overflow::thread_info::set_current_info::{closure_env#0}, core::option::Option<alloc::boxed::Box<str, alloc::alloc::Global>>>, core::option::Option<alloc::boxed::Box<str, alloc::alloc::Global>>> (current.rs:204)
+==25288==    by 0x40C8577: with_current_name<std::sys::pal::unix::stack_overflow::thread_info::set_current_info::{closure_env#0}, core::option::Option<alloc::boxed::Box<str, alloc::alloc::Global>>> (current.rs:216)
+==25288==    by 0x40C8577: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:114)
+==25288==    by 0x40C1A68: init (stack_overflow.rs:185)
+==25288==    by 0x40C1A68: init (mod.rs:38)
+==25288==    by 0x40C1A68: init (rt.rs:118)
+==25288==    by 0x40C1A68: {closure#0} (rt.rs:173)
+==25288==    by 0x40C1A68: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:576)
+==25288==    by 0x40C1A68: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+==25288==    by 0x40C1A68: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+==25288==    by 0x40C1A68: std::rt::lang_start_internal (rt.rs:171)
+==25288==    by 0x4040296: std::rt::lang_start::<()> (rt.rs:205)
+==25288==    by 0x403FBDD: main (in /home/starling/Documents/yandex_rust_projects/broken-app/target/debug/deps/integration-0f6b06e8aa8abf5e)
+==25288== 
+==25288== 48 bytes in 1 blocks are possibly lost in loss record 2 of 3
+==25288==    at 0x4941858: malloc (vg_replace_malloc.c:447)
+==25288==    by 0x40B3B0E: alloc (unix.rs:31)
+==25288==    by 0x40B3B0E: alloc_impl (alloc.rs:161)
+==25288==    by 0x40B3B0E: allocate (alloc.rs:223)
+==25288==    by 0x40B3B0E: {closure#0}<std::thread::thread::Inner, std::alloc::System> (sync.rs:823)
+==25288==    by 0x40B3B0E: allocate_for_layout<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>, alloc::sync::{impl#17}::new_uninit_in::{closure_env#0}<std::thread::thread::Inner, std::alloc::System>, fn(*mut u8) -> *mut alloc::sync::ArcInner<core::mem::maybe_uninit::MaybeUninit<std::thread::thread::Inner>>> (sync.rs:2191)
+==25288==    by 0x40B3B0E: new_uninit_in<std::thread::thread::Inner, std::alloc::System> (sync.rs:821)
+==25288==    by 0x40B3B0E: <std::thread::thread::Thread>::new (thread.rs:102)
+==25288==    by 0x40C3B09: std::thread::current::init_current (current.rs:294)
+==25288==    by 0x40A84DF: current_or_unnamed (current.rs:251)
+==25288==    by 0x40A84DF: <std::sync::mpmc::context::Context>::new (context.rs:72)
+==25288==    by 0x4040E2D: __rust_std_internal_init_fn (context.rs:43)
+==25288==    by 0x4040E2D: call_once<fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()> (function.rs:250)
+==25288==    by 0x4040E2D: unwrap_or_else<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (option.rs:1065)
+==25288==    by 0x4040E2D: <std::sys::thread_local::native::lazy::Storage<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, ()>>::get_or_init_slow::<<std::sync::mpmc::context::Context>::with::CONTEXT::__rust_std_internal_init_fn> (lazy.rs:80)
+==25288==    by 0x4059F4B: get_or_init<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, (), fn() -> core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>> (lazy.rs:62)
+==25288==    by 0x4059F4B: {closure#0} (mod.rs:97)
+==25288==    by 0x4059F4B: call_once<std::sync::mpmc::context::{impl#0}::with::CONTEXT::{constant#0}::{closure_env#0}, (core::option::Option<&mut core::option::Option<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>>>)> (function.rs:250)
+==25288==    by 0x4059F4B: try_with<core::cell::Cell<core::option::Option<std::sync::mpmc::context::Context>>, std::sync::mpmc::context::{impl#0}::with::{closure_env#1}<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()>, ()> (local.rs:462)
+==25288==    by 0x4059F4B: with<std::sync::mpmc::list::{impl#3}::recv::{closure_env#1}<test::event::CompletedTest>, ()> (context.rs:53)
+==25288==    by 0x4059F4B: <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::recv (list.rs:442)
+==25288==    by 0x40669C9: recv<test::event::CompletedTest> (mod.rs:1025)
+==25288==    by 0x40669C9: recv<test::event::CompletedTest> (mpsc.rs:890)
+==25288==    by 0x40669C9: run_tests<test::console::run_tests_console::{closure_env#2}> (lib.rs:445)
+==25288==    by 0x40669C9: test::console::run_tests_console (console.rs:328)
+==25288==    by 0x405293C: test_main_inner<test::test_main_static::{closure_env#0}> (lib.rs:170)
+==25288==    by 0x405293C: test::test_main_static (lib.rs:195)
+==25288==    by 0x403EB02: integration::main (integration.rs:1)
+==25288==    by 0x40404CA: <fn() as core::ops::function::FnOnce<()>>::call_once (function.rs:250)
+==25288==    by 0x403FF9D: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()> (backtrace.rs:166)
+==25288==    by 0x40402B0: std::rt::lang_start::<()>::{closure#0} (rt.rs:206)
+==25288== 
+==25288== 544 bytes in 1 blocks are still reachable in loss record 3 of 3
+==25288==    at 0x4941858: malloc (vg_replace_malloc.c:447)
+==25288==    by 0x40C879D: alloc (alloc.rs:130)
+==25288==    by 0x40C879D: alloc_impl_runtime (alloc.rs:302)
+==25288==    by 0x40C879D: alloc_impl (alloc.rs:424)
+==25288==    by 0x40C879D: allocate (alloc.rs:541)
+==25288==    by 0x40C879D: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:619)
+==25288==    by 0x40C879D: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:586)
+==25288==    by 0x40C879D: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+==25288==    by 0x40C879D: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+==25288==    by 0x40C879D: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:452)
+==25288==    by 0x40C879D: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:426)
+==25288==    by 0x40C879D: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1052)
+==25288==    by 0x40C879D: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+==25288==    by 0x40C1A68: init (stack_overflow.rs:185)
+==25288==    by 0x40C1A68: init (mod.rs:38)
+==25288==    by 0x40C1A68: init (rt.rs:118)
+==25288==    by 0x40C1A68: {closure#0} (rt.rs:173)
+==25288==    by 0x40C1A68: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:576)
+==25288==    by 0x40C1A68: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+==25288==    by 0x40C1A68: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+==25288==    by 0x40C1A68: std::rt::lang_start_internal (rt.rs:171)
+==25288==    by 0x4040296: std::rt::lang_start::<()> (rt.rs:205)
+==25288==    by 0x403FBDD: main (in /home/starling/Documents/yandex_rust_projects/broken-app/target/debug/deps/integration-0f6b06e8aa8abf5e)
+==25288== 
+==25288== LEAK SUMMARY:
+==25288==    definitely lost: 0 bytes in 0 blocks
+==25288==    indirectly lost: 0 bytes in 0 blocks
+==25288==      possibly lost: 48 bytes in 1 blocks
+==25288==    still reachable: 548 bytes in 2 blocks
+==25288==         suppressed: 0 bytes in 0 blocks
+==25288== 
+==25288== For lists of detected and suppressed errors, rerun with: -s
+==25288== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

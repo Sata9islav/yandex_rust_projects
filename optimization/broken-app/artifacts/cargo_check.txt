@@ -1,0 +1,3 @@
+    Updating crates.io index
+    Checking broken-app v0.1.0 (/home/starling/Documents/yandex_rust_projects/broken-app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.14s

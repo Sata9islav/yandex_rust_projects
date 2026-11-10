@@ -1,0 +1,345 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cycles:u'
+# Event count (approx.): 70905369262
+#
+# Children      Self  Command          Shared Object                Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+# ........  ........  ...............  ...........................  .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    64.07%    63.99%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] broken_app::algo::slow_dedup
+            |          
+            |--52.80%--broken_app::algo::slow_dedup
+            |          
+             --10.91%--0x64044580f2c7093a
+                       broken_app::algo::slow_dedup
+
+    31.60%    17.83%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+            |          
+            |--27.27%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+            |          |          
+            |          |--13.31%--exp@@GLIBC_2.29
+            |          |          |          
+            |          |          |--7.27%--__ieee754_exp_fma
+            |          |          |          |          
+            |          |          |          |--1.03%--top12 (inlined)
+            |          |          |          |          
+            |          |          |           --0.54%--specialcase (inlined)
+            |          |          |          
+            |          |           --0.92%--__exp_finite@GLIBC_2.15@plt
+            |          |          
+            |           --1.19%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+            |          
+             --0.91%--0x1
+                       rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+
+    13.77%     4.91%  comparison-f5d0  libm.so.6                    [.] exp@@GLIBC_2.29
+            |          
+            |--8.86%--exp@@GLIBC_2.29
+            |          |          
+            |          |--7.56%--__ieee754_exp_fma
+            |          |          |          
+            |          |          |--1.03%--top12 (inlined)
+            |          |          |          
+            |          |           --0.54%--specialcase (inlined)
+            |          |          
+            |           --0.92%--__exp_finite@GLIBC_2.15@plt
+            |          
+            |--3.23%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+            |          |          
+            |           --3.05%--exp@@GLIBC_2.29
+            |          
+             --0.52%--0xd
+                       rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+                       exp@@GLIBC_2.29
+
+    10.99%     0.00%  comparison-f5d0  [unknown]                    [.] 0x64044580f2c7093a
+            |
+            ---0x64044580f2c7093a
+               broken_app::algo::slow_dedup
+
+     7.56%     7.56%  comparison-f5d0  libm.so.6                    [.] __ieee754_exp_fma
+            |          
+            |--4.79%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+            |          |          
+            |           --4.50%--exp@@GLIBC_2.29
+            |                     __ieee754_exp_fma
+            |                     |          
+            |                      --0.79%--top12 (inlined)
+            |          
+             --0.53%--0x5d4ca7e3e27f
+                       rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+                       exp@@GLIBC_2.29
+                       __ieee754_exp_fma
+
+     1.37%     1.37%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] rayon::slice::sort::recurse::<f64, <[f64] as rayon::slice::ParallelSliceMut<f64>>::par_sort_unstable_by<<criterion::stats::univariate::sample::Sample<_>>::percentiles::cmp<f64>>::{closure#0}>
+     1.33%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000001
+            |
+            ---0x1
+               |          
+                --1.33%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+
+     1.10%     1.10%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] rayon::slice::sort::insertion_sort_shift_left::<f64, <[f64] as rayon::slice::ParallelSliceMut<f64>>::par_sort_unstable_by<<criterion::stats::univariate::sample::Sample<_>>::percentiles::cmp<f64>>::{closure#0}>
+            |          
+             --0.81%--rayon::slice::sort::insertion_sort_shift_left::<f64, <[f64] as rayon::slice::ParallelSliceMut<f64>>::par_sort_unstable_by<<criterion::stats::univariate::sample::Sample<_>>::percentiles::cmp<f64>>::{closure#0}>
+
+     1.03%     0.00%  comparison-f5d0  libm.so.6                    [.] top12 (inlined)
+            |
+            ---top12 (inlined)
+
+     0.92%     0.92%  comparison-f5d0  libm.so.6                    [.] __exp_finite@GLIBC_2.15@plt
+            |          
+             --0.74%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+                       exp@@GLIBC_2.29
+                       __exp_finite@GLIBC_2.15@plt
+
+     0.90%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000d
+            |
+            ---0xd
+               |          
+                --0.83%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+                          |          
+                           --0.76%--exp@@GLIBC_2.29
+
+     0.85%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000003
+            |
+            ---0x3
+               |          
+                --0.85%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+
+     0.79%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] 0x00005d4ca7e3e27f
+            |
+            ---0x5d4ca7e3e27f
+               |          
+                --0.79%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+                          |          
+                           --0.60%--exp@@GLIBC_2.29
+                                     |          
+                                      --0.53%--__ieee754_exp_fma
+
+     0.77%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000c34f
+            |
+            ---0xc34f
+               |          
+                --0.57%--core::slice::sort::unstable::ipnsort::<u64, <u64 as core::cmp::PartialOrd>::lt>
+
+     0.73%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000f
+            |
+            ---0xf
+               |          
+                --0.73%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+
+     0.61%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000005
+            |
+            ---0x5
+
+     0.60%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000e
+            |
+            ---0xe
+               |          
+                --0.60%--rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>
+
+     0.57%     0.57%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] core::slice::sort::unstable::ipnsort::<u64, <u64 as core::cmp::PartialOrd>::lt>
+            |
+            ---0xc34f
+               core::slice::sort::unstable::ipnsort::<u64, <u64 as core::cmp::PartialOrd>::lt>
+
+     0.57%     0.57%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <criterion::stats::univariate::resamples::Resamples<f64>>::next
+     0.54%     0.00%  comparison-f5d0  libm.so.6                    [.] specialcase (inlined)
+            |
+            ---specialcase (inlined)
+
+     0.35%     0.00%  comparison-f5d0  [unknown]                    [.] 0xfffffffffffffffe
+     0.31%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000006
+     0.31%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000004
+     0.31%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <core::iter::adapters::chain::Chain<core::ops::range::Range<usize>, core::ops::range::Range<usize>> as core::iter::traits::iterator::Iterator>::try_fold::<(), core::iter::adapters::filter::filter_try_fold<usize, (), core::ops::control_flow::ControlFlow<rayon_core::job::JobRef>, <rayon_core::registry::WorkerThread>::steal::{closure#0}, core::iter::traits::iterator::Iterator::find_map::check<usize, rayon_core::job::JobRef, <rayon_core::registry::WorkerThread>::steal::{closure#1}>::{closure#0}>::{closure#0}, core::ops::control_flow::ControlFlow<rayon_core::job::JobRef>>
+     0.30%     0.00%  comparison-f5d0  libm.so.6                    [.] check_oflow (inlined)
+     0.27%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000007
+     0.25%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000b
+     0.25%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000002
+     0.25%     0.00%  comparison-f5d0  [unknown]                    [.] 0x32312e3836373634
+     0.24%     0.00%  comparison-f5d0  libm.so.6                    [.] __GI___exp (inlined)
+     0.21%     0.21%  comparison-f5d0  libc.so.6                    [.] __memset_avx512_unaligned_erms
+     0.21%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <hashbrown::raw::RawTable<(u64, ())>>::with_capacity_in
+     0.19%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000008
+     0.19%     0.19%  comparison-f5d0  libm.so.6                    [.] __math_check_oflow
+     0.18%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::job::StackJob<rayon_core::latch::SpinLatch, rayon_core::join::join_context::call_b<rayon::iter::collect::consumer::CollectResult<f64>, rayon::iter::plumbing::bridge_producer_consumer::helper<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>::{closure#1}>::{closure#0}, rayon::iter::collect::consumer::CollectResult<f64>> as rayon_core::job::Job>::execute
+     0.17%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000c
+     0.14%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000030
+     0.14%     0.14%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <criterion::stats::univariate::resamples::Resamples<f64>>::next
+     0.13%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000076f58504e
+     0.13%     0.13%  comparison-f5d0  libm.so.6                    [.] xflow
+     0.12%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000011a7d7f5d9
+     0.12%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000277
+     0.12%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::registry::WorkerThread>::wait_until_cold
+     0.12%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000619
+     0.12%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] rayon_core::join::join_context::<rayon::iter::plumbing::bridge_producer_consumer::helper<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>::{closure#0}, rayon::iter::plumbing::bridge_producer_consumer::helper<rayon::slice::IterProducer<f64>, rayon::iter::map::MapConsumer<rayon::iter::collect::consumer::CollectConsumer<f64>, <criterion::stats::univariate::kde::Kde<f64, criterion::stats::univariate::kde::kernel::Gaussian>>::map::{closure#0}>>::{closure#1}, rayon::iter::collect::consumer::CollectResult<f64>, rayon::iter::collect::consumer::CollectResult<f64>>::{closure#0}
+     0.12%     0.00%  comparison-f5d0  [unknown]                    [.] 0x23221e1d1a191714
+     0.12%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000002d
+     0.10%     0.10%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon::iter::reduce::ReduceConsumer<criterion::stats::univariate::bootstrap<f64, f64, (f64, f64), criterion::analysis::compare::estimates::stats>::{closure#3}, criterion::stats::univariate::bootstrap<f64, f64, (f64, f64), criterion::analysis::compare::estimates::stats>::{closure#2}> as rayon::iter::plumbing::Reducer<(alloc::vec::Vec<f64>, alloc::vec::Vec<f64>)>>::reduce
+     0.10%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000011be3f1c8f
+     0.09%     0.00%  comparison-f5d0  [unknown]                    [.] 0x211e1d1c1b1a1916
+     0.09%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000043
+     0.08%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000c041
+     0.08%     0.08%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <&criterion::stats::univariate::mixed::bootstrap<f64, (f64,), criterion::analysis::compare::t_test::{closure#1}>::{closure#1} as core::ops::function::Fn<(&mut criterion::stats::univariate::resamples::Resamples<f64>, usize)>>::call
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000002f
+     0.07%     0.07%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00ef0
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x28160eb490d20321
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x28160eb490d23e11
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000005ab1
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000003c42
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x28160eb490d23901
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000007be3f18d7
+     0.07%     0.00%  comparison-f5d0  libc.so.6                    [.] _int_free_chunk
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x3c75dad8c6600e12
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0xb6a1fd2f266a73ff
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000070000001f
+     0.07%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000013b
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000002a
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000010a04
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000001c
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000017
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000009ffffff
+     0.06%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] 0x00005d4ca7d6e18f
+     0.06%     0.06%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <core::iter::adapters::map::Map<core::ops::range::Range<usize>, <rayon::iter::map_with::MapWithFolder<_, _, _> as rayon::iter::plumbing::Folder<_>>::consume_iter::with<usize, criterion::stats::bivariate::resamples::Resamples<f64, f64>, (f64,), &<criterion::stats::bivariate::Data<f64, f64>>::bootstrap<(f64,), criterion::analysis::regression::{closure#0}>::{closure#1}>::{closure#0}> as core::iter::traits::iterator::Iterator>::try_fold::<(alloc::vec::Vec<f64>,), <core::iter::adapters::take_while::TakeWhile<_, _> as core::iter::traits::iterator::Iterator>::try_fold::check<(f64,), (alloc::vec::Vec<f64>,), core::ops::try_trait::NeverShortCircuit<(alloc::vec::Vec<f64>,)>, <rayon::iter::fold::FoldFolder<_, _, _> as rayon::iter::plumbing::Folder<_>>::consume_iter::not_full<rayon::iter::reduce::ReduceFolder<<criterion::stats::bivariate::Data<f64, f64>>::bootstrap<(f64,), criterion::analysis::regression::{closure#0}>::{closure#5}, (alloc::vec::Vec<f64>,)>, (alloc::vec::Vec<f64>,), (f64,)>::{closure#0}, <core::ops::try_trait::NeverShortCircuit<(alloc::vec::Vec<f64>,)>>::wrap_mut_2<(alloc::vec::Vec<f64>,), (f64,), &<criterion::stats::bivariate::Data<f64, f64>>::bootstrap<(f64,), criterion::analysis::regression::{closure#0}>::{closure#3}>::{closure#0}>::{closure#0}, core::ops::control_flow::ControlFlow<core::ops::try_trait::NeverShortCircuit<(alloc::vec::Vec<f64>,)>, (alloc::vec::Vec<f64>,)>>
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000007be9f2ecf
+     0.06%     0.00%  comparison-f5d0  libm.so.6                    [.] asuint64 (inlined)
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000700000007
+     0.06%     0.06%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] crossbeam_epoch::default::with_handle::<crossbeam_epoch::default::pin::{closure#0}, crossbeam_epoch::guard::Guard>
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x4e4d4c4b4a45443c
+     0.06%     0.06%  comparison-f5d0  libm.so.6                    [.] with_errno.constprop.0
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000700000013
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000062b
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x1d1c1b1a19161512
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000035
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x41181fe4f0f0f0f0
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000009
+     0.06%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::sleep::Sleep>::wake_any_threads
+     0.06%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000007bebf460f
+     0.05%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000030c
+     0.04%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000001f
+     0.04%     0.04%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::analysis::estimates::stats
+     0.04%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000587f
+     0.03%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000000000000c2
+     0.03%     0.00%  comparison-f5d0  libc.so.6                    [.] realloc
+     0.03%     0.00%  comparison-f5d0  libc.so.6                    [.] _int_realloc
+     0.03%     0.03%  comparison-f5d0  libc.so.6                    [.] __memmove_avx512_unaligned_erms
+     0.03%     0.00%  comparison-f5d0  libc.so.6                    [.] __GI_memcpy (inlined)
+     0.03%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <alloc::raw_vec::RawVecInner<_>>::reserve::do_reserve_and_handle::<alloc::alloc::Global>
+     0.03%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <alloc::raw_vec::RawVecInner>::finish_grow
+     0.02%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000063
+     0.01%     0.00%  comparison-f5d0  [unknown]                    [.] 0x08090b08090402ff
+     0.01%     0.01%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <criterion::stats::univariate::sample::Sample<f64>>::percentiles
+     0.01%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000033
+     0.01%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000011b19d7097
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::registry::WorkerThread>::find_work
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000fff
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::estimate::build_estimates
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000199
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <alloc::raw_vec::RawVecInner<_>>::reserve::do_reserve_and_handle::<alloc::alloc::Global>
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <alloc::raw_vec::RawVecInner>::finish_grow
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000000a
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <crossbeam_epoch::internal::Global>::try_advance
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x3fee666666666665
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::estimate::build_change_estimates
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] _int_free_merge_chunk
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] _int_free_create_chunk (inlined)
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] unlink_chunk.isra.0
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __GI___sigaltstack
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00b93
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000006ffffffff
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffb053c8cf
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffaee00bb7
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffb053c3ee
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] 0x00005d4ca7e3eaef
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x4443423e3d3b3937
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000010ffffffff
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::analysis::compare::estimates::stats
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <crossbeam_deque::deque::Stealer<rayon_core::job::JobRef>>::steal
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00b90
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::sleep::Sleep>::wake_specific_thread
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000e89
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <std::sys::sync::mutex::futex::Mutex>::lock_contended
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000001100008646
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <crossbeam_deque::deque::Worker<rayon_core::job::JobRef>>::pop
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] syscall
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00b94
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000005f
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] rayon::iter::plumbing::bridge_producer_consumer::helper::<rayon::range::IterProducer<usize>, rayon::iter::map_with::MapInitConsumer<rayon::iter::fold::FoldConsumer<rayon::iter::reduce::ReduceConsumer<<criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#5}, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#4}>, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#2}, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#3}>, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#0}, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#1}>>
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __GI___clone3
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] start_thread
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x4118c2e882cb3596
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] _start
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] _dl_start
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <std::sys::thread::unix::Thread>::new::thread_start
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] init_cpu_features.constprop.0
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] _dl_start_final (inlined)
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] _dl_sysdep_start
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] dl_platform_init (inlined)
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __GI___pthread_attr_destroy
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] std::sys::pal::unix::stack_overflow::imp::make_handler
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000005ffffffff
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::sleep::Sleep>::sleep::<<rayon_core::registry::WorkerThread>::wait_until_cold::{closure#0}>
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <std::sys::sync::condvar::futex::Condvar>::wait
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __ctype_init
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] arena_get2
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] tcache_free_init
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] tcache_init (inlined)
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __libc_malloc2
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] _int_new_arena (inlined)
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __printf_buffer
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] name_stack_maps
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] snprintf
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __vsnprintf_internal
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x006a696564625f5d
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee0163a
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <criterion::stats::Distribution<f64>>::confidence_interval
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::analysis::base_dir_exists
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] cfree@GLIBC_2.2.5
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000003d
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <std::sys::sync::mutex::futex::Mutex>::wake
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon::iter::reduce::ReduceConsumer<<criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#5}, <criterion::stats::univariate::sample::Sample<f64>>::bootstrap<(f64, f64, f64, f64), criterion::analysis::estimates::stats>::{closure#4}> as rayon::iter::plumbing::Reducer<(alloc::vec::Vec<f64>, alloc::vec::Vec<f64>, alloc::vec::Vec<f64>, alloc::vec::Vec<f64>)>>::reduce
+     0.00%     0.00%  comparison-f5d0  libm.so.6                    [.] __math_oflow
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000bff
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffb053c3c1
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffb053c8e2
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffaee0102b
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffb0538cf3
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000000000005ff
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::registry::Registry>::in_worker_cold::<rayon_core::join::join_context<rayon_core::join::join::call<(), rayon::slice::sort::recurse<f64, <[f64] as rayon::slice::ParallelSliceMut<f64>>::par_sort_unstable_by<<criterion::stats::univariate::sample::Sample<_>>::percentiles::cmp<f64>>::{closure#0}>::{closure#0}>::{closure#0}, rayon_core::join::join::call<(), rayon::slice::sort::recurse<f64, <[f64] as rayon::slice::ParallelSliceMut<f64>>::par_sort_unstable_by<<criterion::stats::univariate::sample::Sample<_>>::percentiles::cmp<f64>>::{closure#0}>::{closure#1}>::{closure#0}, (), ()>::{closure#0}, ((), ())>
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] <rayon_core::latch::LockLatch>::wait_and_reset
+     0.00%     0.00%  comparison-f5d0  ld-linux-x86-64.so.2         [.] elf_machine_load_address (inlined)
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee015f5
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] malloc_init_state (inlined)
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000073
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00083
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00f30
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee01010
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x405df208f005c03a
+     0.00%     0.00%  comparison-f5d0  comparison-f5d0471f6b6a7074  [.] criterion::kde::sweep_and_estimate
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000051
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000077
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000081
+     0.00%     0.00%  comparison-f5d0  libc.so.6                    [.] __lll_lock_wait_private
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee000ba
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaee00112
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0xffffffffaf148520
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffaee0012b
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0xffffffffb0533b85
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000031
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000037
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000039
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000003b
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000000006f
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x0000000000000079
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000000000000f5
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [k] 0x000000000000026f
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x00000000000009ff
+     0.00%     0.00%  comparison-f5d0  [unknown]                    [.] 0x000000000001869f
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

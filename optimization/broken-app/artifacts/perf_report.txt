@@ -1,0 +1,167 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 5  of event 'cpu/cycles/P'
+# Event count (approx.): 1874332
+#
+# Children      Self  Command  Shared Object         Symbol                
+# ........  ........  .......  ....................  ......................
+#
+    99.29%    99.29%  demo     [unknown]             [k] 0xffffffffaee001bd
+            |
+            ---dl_main
+               _dl_unload_cache
+
+    99.29%     0.00%  demo     ld-linux-x86-64.so.2  [.] dl_main
+            |
+            ---dl_main
+               _dl_unload_cache
+
+    99.29%     0.00%  demo     ld-linux-x86-64.so.2  [.] _dl_unload_cache
+            |
+            ---_dl_unload_cache
+
+     0.69%     0.69%  demo     [unknown]             [k] 0xffffffffaf92c06c
+            |
+            ---0xffffffffaee0012b
+               0xffffffffb0533b85
+               0xffffffffaf148783
+               0xffffffffaf6faa6e
+               0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaee0012b
+            |
+            ---0xffffffffaee0012b
+               0xffffffffb0533b85
+               0xffffffffaf148783
+               0xffffffffaf6faa6e
+               0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffb0533b85
+            |
+            ---0xffffffffb0533b85
+               0xffffffffaf148783
+               0xffffffffaf6faa6e
+               0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf148783
+            |
+            ---0xffffffffaf148783
+               0xffffffffaf6faa6e
+               0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6faa6e
+            |
+            ---0xffffffffaf6faa6e
+               0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6fa75b
+            |
+            ---0xffffffffaf6fa75b
+               0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6f8d7a
+            |
+            ---0xffffffffaf6f8d7a
+               0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6f8c90
+            |
+            ---0xffffffffaf6f8c90
+               0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6f892c
+            |
+            ---0xffffffffaf6f892c
+               0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf7a33b5
+            |
+            ---0xffffffffaf7a33b5
+               0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf6fafe9
+            |
+            ---0xffffffffaf6fafe9
+               0xffffffffaf9ae52e
+
+     0.69%     0.00%  demo     [unknown]             [k] 0xffffffffaf9ae52e
+            |
+            ---0xffffffffaf9ae52e
+
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaee0012b
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffb0533b85
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf148783
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6faa6e
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6fa75b
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6f8d7a
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6f8c90
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6f892c
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf7a33b5
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf6faf85
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf574c45
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56ca0f
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56c2b9
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56c0bf
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56bec5
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56b5b0
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf56b074
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf566f83
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf157acf
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf157967
+     0.02%     0.00%  perf-ex  [unknown]             [k] 0xffffffffaf33d465
+     0.01%     0.01%  perf-ex  [unknown]             [k] 0xffffffffaf55d140
+     0.01%     0.01%  perf-ex  [unknown]             [k] 0xffffffffaf55d145
+     0.01%     0.01%  perf-ex  [unknown]             [k] 0xffffffffaf56a595
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

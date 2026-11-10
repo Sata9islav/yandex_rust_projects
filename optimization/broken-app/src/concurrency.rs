@@ -1,0 +1,30 @@
+use std::sync::atomic::{AtomicU64, Ordering};
+use std::thread;
+
+static COUNTER: AtomicU64 = AtomicU64::new(0);
+
+/// Thread-safe counter. Callers must not run concurrent independent batches
+/// because they share the same global counter, as in the reference API.
+pub fn race_increment(iterations: usize, threads: usize) -> u64 {
+    COUNTER.store(0, Ordering::SeqCst);
+    let mut handles = Vec::with_capacity(threads);
+    for _ in 0..threads {
+        handles.push(thread::spawn(move || {
+            for _ in 0..iterations {
+                COUNTER.fetch_add(1, Ordering::SeqCst);
+            }
+        }));
+    }
+    for handle in handles {
+        handle.join().expect("counter worker panicked");
+    }
+    COUNTER.load(Ordering::SeqCst)
+}
+
+pub fn read_after_sleep() -> u64 {
+    COUNTER.load(Ordering::SeqCst)
+}
+
+pub fn reset_counter() {
+    COUNTER.store(0, Ordering::SeqCst);
+}

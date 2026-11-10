@@ -1,0 +1,25 @@
+    Finished `bench` profile [optimized] target(s) in 0.04s
+     Running benches/comparison.rs (target/release/deps/comparison-f5d0471f6b6a7074)
+Gnuplot not found, using plotters backend
+Benchmarking fib_32
+Benchmarking fib_32: Warming up for 3.0000 s
+Benchmarking fib_32: Collecting 100 samples in estimated 5.0000 s (1.5B iterations)
+Benchmarking fib_32: Analyzing
+fib_32                  time:   [3.3412 ns 3.3574 ns 3.3758 ns]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high severe
+
+Benchmarking dedup_10000
+Benchmarking dedup_10000: Warming up for 3.0000 s
+Benchmarking dedup_10000: Collecting 100 samples in estimated 5.2498 s (71k iterations)
+Benchmarking dedup_10000: Analyzing
+dedup_10000             time:   [73.550 µs 73.872 µs 74.243 µs]
+
+Benchmarking dedup_50000
+Benchmarking dedup_50000: Warming up for 3.0000 s
+Benchmarking dedup_50000: Collecting 100 samples in estimated 6.1232 s (15k iterations)
+Benchmarking dedup_50000: Analyzing
+dedup_50000             time:   [396.14 µs 398.13 µs 400.47 µs]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high severe
+

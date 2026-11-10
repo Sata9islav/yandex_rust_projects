@@ -1,0 +1,107 @@
+   Compiling proc-macro2 v1.0.103
+   Compiling unicode-ident v1.0.22
+   Compiling quote v1.0.42
+   Compiling crossbeam-utils v0.8.21
+   Compiling serde_core v1.0.228
+   Compiling zerocopy v0.8.31
+   Compiling autocfg v1.5.0
+   Compiling serde v1.0.228
+   Compiling rayon-core v1.13.0
+   Compiling libc v0.2.178
+   Compiling serde_json v1.0.145
+   Compiling either v1.15.0
+   Compiling cfg-if v1.0.4
+   Compiling plotters-backend v0.3.7
+   Compiling anstyle v1.0.13
+   Compiling itoa v1.0.15
+   Compiling memchr v2.7.6
+   Compiling ciborium-io v0.2.2
+   Compiling clap_lex v0.7.6
+   Compiling regex-syntax v0.8.8
+   Compiling ryu v1.0.20
+   Compiling same-file v1.0.6
+   Compiling cast v0.3.0
+   Compiling itertools v0.10.5
+   Compiling walkdir v2.5.0
+   Compiling oorandom v11.1.5
+   Compiling clap_builder v4.5.53
+   Compiling once_cell v1.21.3
+   Compiling plotters-svg v0.3.7
+   Compiling broken-app v0.1.0 (/home/starling/Documents/yandex_rust_projects/broken-app-original)
+   Compiling anes v0.1.6
+   Compiling num-traits v0.2.19
+warning[E0133]: dereference of raw pointer is unsafe and requires unsafe block
+  --> src/lib.rs:60:15
+   |
+60 |     let val = *raw;
+   |               ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+note: an unsafe function restricts its caller, but its body is safe by default
+  --> src/lib.rs:57:1
+   |
+57 | pub unsafe fn use_after_free() -> i32 {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+   = note: `#[warn(unsafe_op_in_unsafe_fn)]` (part of `#[warn(rust_2024_compatibility)]`) on by default
+
+warning[E0133]: call to unsafe function `std::boxed::Box::<T>::from_raw` is unsafe and requires unsafe block
+  --> src/lib.rs:61:10
+   |
+61 |     drop(Box::from_raw(raw));
+   |          ^^^^^^^^^^^^^^^^^^ call to unsafe function
+   |
+   = note: consult the function's documentation for information on how to avoid undefined behavior
+   = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+
+warning[E0133]: dereference of raw pointer is unsafe and requires unsafe block
+  --> src/lib.rs:62:11
+   |
+62 |     val + *raw
+   |           ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+   = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2024/unsafe-op-in-unsafe-fn.html>
+
+For more information about this error, try `rustc --explain E0133`.
+warning: `broken-app` (lib) generated 3 warnings (run `cargo fix --lib -p broken-app` to apply 1 suggestion)
+   Compiling crossbeam-epoch v0.9.18
+   Compiling syn v2.0.111
+   Compiling crossbeam-deque v0.8.6
+   Compiling is-terminal v0.4.17
+   Compiling plotters v0.3.7
+   Compiling regex-automata v0.4.13
+   Compiling criterion-plot v0.5.0
+   Compiling rayon v1.11.0
+   Compiling clap v4.5.53
+   Compiling regex v1.12.2
+   Compiling zerocopy-derive v0.8.31
+   Compiling serde_derive v1.0.228
+   Compiling tinytemplate v1.2.1
+   Compiling half v2.7.1
+   Compiling ciborium-ll v0.2.2
+   Compiling ciborium v0.2.2
+   Compiling criterion v0.5.1
+    Finished `bench` profile [optimized] target(s) in 7.76s
+     Running benches/comparison.rs (target/release/deps/comparison-f5d0471f6b6a7074)
+Gnuplot not found, using plotters backend
+Benchmarking fib_32
+Benchmarking fib_32: Warming up for 3.0000 s
+Benchmarking fib_32: Collecting 100 samples in estimated 5.2256 s (1400 iterations)
+Benchmarking fib_32: Analyzing
+fib_32                  time:   [3.7692 ms 3.7916 ms 3.8142 ms]
+
+Benchmarking dedup_10000
+Benchmarking dedup_10000: Warming up for 3.0000 s
+Benchmarking dedup_10000: Collecting 100 samples in estimated 5.1066 s (500 iterations)
+Benchmarking dedup_10000: Analyzing
+dedup_10000             time:   [10.266 ms 10.316 ms 10.367 ms]
+
+Benchmarking dedup_50000
+Benchmarking dedup_50000: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 25.4s, or reduce sample count to 10.
+Benchmarking dedup_50000: Collecting 100 samples in estimated 25.386 s (100 iterations)
+Benchmarking dedup_50000: Analyzing
+dedup_50000             time:   [253.32 ms 254.43 ms 255.59 ms]
+
