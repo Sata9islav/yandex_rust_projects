@@ -1,1 +1,0 @@
-/home/starling/Documents/yandex_rust_projects/reference-app/target/release/libreference_app.rlib: /home/starling/Documents/yandex_rust_projects/reference-app/src/algo.rs /home/starling/Documents/yandex_rust_projects/reference-app/src/concurrency.rs /home/starling/Documents/yandex_rust_projects/reference-app/src/lib.rs
