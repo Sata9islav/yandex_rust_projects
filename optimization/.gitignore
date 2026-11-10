@@ -1,11 +1,22 @@
-
 # ========================================
 # Rust / Cargo
 # ========================================
 
-/target/
+**/target/
 **/*.rs.bk
 *.pdb
+
+# ========================================
+# Optimization / Profiling
+# ========================================
+
+optimization/**/perf.data*
+optimization/**/perf_bench.data*
+
+*.profraw
+*.profdata
+*.gcda
+*.gcno
 
 # ========================================
 # Environment / Secrets
