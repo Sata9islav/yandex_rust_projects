@@ -1,5 +1,4 @@
-/// Трейт, чтобы **реализовывать** и **требовать** метод 'распарсь и покажи,
-/// что распарсить осталось'
+
 pub trait Parser {
     type Dest;
 
@@ -17,7 +16,6 @@ trait Parsable: Sized {
 }
 
 mod stdp {
-    // parsers for std types
     use super::Parser;
 
     #[derive(Debug)]
@@ -135,7 +133,7 @@ impl Parser for Unquote {
         do_unquote(input)
     }
 }
-/// Конструктор [Unquote]
+
 fn unquote() -> Unquote {
     Unquote
 }
@@ -196,13 +194,7 @@ impl<T: Parser> Parser for StripWhitespace<T> {
 fn strip_whitespace<T: Parser>(parser: T) -> StripWhitespace<T> {
     StripWhitespace { parser }
 }
-/// Комбинатор, чтобы распарсить нужное, окружённое в начале и в конце чем-то
-/// обязательным, не участвующем в результате.
-/// Пробрасывает строку в парсер1, оставшуюся строку после первого
-/// парсинга - в парсер2, оставшуюся строку после второго парсинга - в парсер3.
-/// Результат парсера2 будет результатом этого комбинатора, а оставшейся
-/// строкой - строка, оставшаяся после парсера3.
-/// (аналог `delimited` из `nom`)
+
 #[derive(Debug, Clone)]
 struct Delimited<Prefix, T, Suffix> {
     prefix_to_ignore: Prefix,
@@ -563,7 +555,6 @@ where
 {
     type Dest = Dest;
     fn parse_ref<'a>(&self, input: &'a str) -> Result<(&'a str, Self::Dest), ()> {
-        // match вместо тут не подойдёт - нужно лениво
         if let Ok(ok) = self.parser.0.parse_ref(input) {
             return Ok(ok);
         }
@@ -753,7 +744,6 @@ impl Parsable for Status {
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct AssetDsc {
-    // `dsc` aka `description`
     pub id: String,
     pub dsc: String,
 }
